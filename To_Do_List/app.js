@@ -2,8 +2,37 @@ function add_todo(){
     var x = document.getElementById('task').value
     const node = document.createElement('div')
     node.className = "list-group-item list-group-item-primary mb-2"
+    var checkbox = document.createElement('input');
+    checkbox.type = "checkbox";
+    checkbox.className = "form-check-input";
+    checkbox.style.float= "right";
     const textnode = document.createTextNode(x)
     node.appendChild(textnode)
+    node.appendChild(checkbox);
+    checkbox.addEventListener('change', () => {
+        if (checkbox.checked) {
+            node.style.backgroundColor = "lightblue";
+            alert("task compelete")
+            document.getElementById("ee").remove()
+            
+             //node.appendChild(completedText);
+             var completedText = document.createElement('div');
+             var c= document.createElement('textnode') 
+            
+           c.textContent ="Task completed"
+            c.style ="float:right;margin-right: 7px; margin-top:5px;"
+    
+
+             completedText.className = "text-center mt-10";
+             completedText.textContent = "Task Completed";
+             completedText.style.textAlign="right"
+             node.appendChild(c);
+
+
+        } else {
+            node.style.backgroundColor = ""; // Reset to default color
+        }
+    });
     var b = document.createElement('button')
     b.className = "btn btn-danger"
     b.textContent = "Delete"
